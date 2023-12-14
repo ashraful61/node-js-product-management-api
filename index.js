@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require('cors');
 const productHandler = require("./routeHandler/productHandler");
 const userHandler = require("./routeHandler/userHandler");
 
@@ -7,8 +8,10 @@ const port = process.env.PORT || 5000;
 
 // express app initialization
 const app = express();
+
 const dotenv = require("dotenv").config();
 app.use(express.json());
+app.use(cors());
 
 // database connection with mongoose
 mongoose.set("strictQuery", false);
