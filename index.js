@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require('cors');
+const cors = require("cors");
 const productHandler = require("./routeHandler/productHandler");
 const userHandler = require("./routeHandler/userHandler");
 
@@ -9,9 +9,10 @@ const port = process.env.PORT || 5000;
 // express app initialization
 const app = express();
 
+// Enable CORS for all routes
+app.use(cors());
 const dotenv = require("dotenv").config();
 app.use(express.json());
-app.use(cors());
 
 // database connection with mongoose
 mongoose.set("strictQuery", false);
@@ -24,7 +25,6 @@ mongoose
   })
   .then(() => console.log("db connection successful"))
   .catch((err) => console.log(err));
-
 
 // Application Routes
 
